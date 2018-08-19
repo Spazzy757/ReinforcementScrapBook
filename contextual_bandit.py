@@ -131,6 +131,9 @@ e = 0.1
 
 init = tf.global_variables_initializer()
 
+# Need to Initialize so we can use it outside of the TensorFlow Session
+ww = None
+
 # Launch the TensorFlow graph
 with tf.Session() as sess:
     sess.run(init)
@@ -170,6 +173,7 @@ print("#################################################")
 print("Number of Bandits: ", c_bandit.num_bandits)
 print("Number of Actions: ", c_bandit.num_actions)
 print("#################################################")
+
 for a in range(c_bandit.num_bandits):
     print("The agent thinks action " + str(np.argmax(ww[a]) + 1)
           + " for bandit " + str(a + 1) + " is the most promising....")
